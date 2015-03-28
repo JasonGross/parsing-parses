@@ -1,13 +1,13 @@
 (** * Implementation of simply-typed interface of the parser *)
-Require Export ADTSynthesis.Parsers.ParserInterface.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammarProperties.
-Require Import ADTSynthesis.Parsers.BooleanRecognizer ADTSynthesis.Parsers.BooleanRecognizerCorrect.
-Require Import ADTSynthesis.Parsers.Splitters.RDPList.
-Require Import ADTSynthesis.Parsers.BaseTypes ADTSynthesis.Parsers.BooleanBaseTypes.
-Require Import ADTSynthesis.Parsers.StringLike.Core.
-Require Import ADTSynthesis.Parsers.MinimalParseOfParse.
-Require Import ADTSynthesis.Common.
+Require Export ParsingParses.Parsers.ParserInterface.
+Require Import ParsingParses.Parsers.ContextFreeGrammar.
+Require Import ParsingParses.Parsers.ContextFreeGrammarProperties.
+Require Import ParsingParses.Parsers.BooleanRecognizer ParsingParses.Parsers.BooleanRecognizerCorrect.
+Require Import ParsingParses.Parsers.Splitters.RDPList.
+Require Import ParsingParses.Parsers.BaseTypes ParsingParses.Parsers.BooleanBaseTypes.
+Require Import ParsingParses.Parsers.StringLike.Core.
+Require Import ParsingParses.Parsers.MinimalParseOfParse.
+Require Import ParsingParses.Common.
 
 Set Implicit Arguments.
 

@@ -1,7 +1,7 @@
 (** * Definition of the interface and implementation of the dependently-typed CFG parser *)
 Require Import Coq.Lists.List Coq.Program.Program Coq.Program.Wf Coq.Arith.Wf_nat Coq.Arith.Compare_dec Coq.Classes.RelationClasses Coq.Strings.String.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar ADTSynthesis.Parsers.BaseTypes.
-Require Import ADTSynthesis.Common ADTSynthesis.Common.Wf.
+Require Import ParsingParses.Parsers.ContextFreeGrammar ParsingParses.Parsers.BaseTypes.
+Require Import ParsingParses.Common ParsingParses.Common.Wf.
 
 Set Implicit Arguments.
 

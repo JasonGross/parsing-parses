@@ -1,15 +1,15 @@
 (** * Simplified parser for (ab)* *)
 Require Import Coq.Lists.List Coq.Strings.String.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar.
-Require Import ADTSynthesis.Parsers.BaseTypes ADTSynthesis.Parsers.BooleanBaseTypes.
-Require Import ADTSynthesis.Parsers.Splitters.RDPList.
-Require Import ADTSynthesis.Common.
+Require Import ParsingParses.Parsers.ContextFreeGrammar.
+Require Import ParsingParses.Parsers.BaseTypes ParsingParses.Parsers.BooleanBaseTypes.
+Require Import ParsingParses.Parsers.Splitters.RDPList.
+Require Import ParsingParses.Common.
 
-Require Import ADTSynthesis.Parsers.MinimalParse.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammarNotations.
-Require Import ADTSynthesis.Parsers.Grammars.ABStar.
+Require Import ParsingParses.Parsers.MinimalParse.
+Require Import ParsingParses.Parsers.ContextFreeGrammarNotations.
+Require Import ParsingParses.Parsers.Grammars.ABStar.
 
-Require Import ADTSynthesis.Parsers.BooleanRecognizer ADTSynthesis.Parsers.BooleanRecognizerCorrect ADTSynthesis.Parsers.Splitters.FirstChar ADTSynthesis.Parsers.ContextFreeGrammarProperties.
+Require Import ParsingParses.Parsers.BooleanRecognizer ParsingParses.Parsers.BooleanRecognizerCorrect ParsingParses.Parsers.Splitters.FirstChar ParsingParses.Parsers.ContextFreeGrammarProperties.
 
 Set Implicit Arguments.
 Local Open Scope string_scope.

@@ -1,8 +1,8 @@
 (** * Definitions of some specific string-like types *)
 Require Import Coq.Strings.String.
 Require Import Coq.Numbers.Natural.Peano.NPeano.
-Require Import ADTSynthesis.Parsers.StringLike.Core.
-Require Import ADTSynthesis.Common.
+Require Import ParsingParses.Parsers.StringLike.Core.
+Require Import ParsingParses.Common.
 
 Set Implicit Arguments.
 

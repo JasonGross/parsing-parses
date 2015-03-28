@@ -1,9 +1,9 @@
 (** * Transform CFG parser into an optional one *)
 Require Import Coq.Lists.List Coq.Program.Program Coq.Classes.RelationClasses Coq.Strings.String.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar.
-Require Import ADTSynthesis.Parsers.StringLike.Properties.
-Require Import ADTSynthesis.Parsers.DependentlyTyped ADTSynthesis.Parsers.BaseTypes.
-Require Import ADTSynthesis.Common ADTSynthesis.Common.Equality.
+Require Import ParsingParses.Parsers.ContextFreeGrammar.
+Require Import ParsingParses.Parsers.StringLike.Properties.
+Require Import ParsingParses.Parsers.DependentlyTyped ParsingParses.Parsers.BaseTypes.
+Require Import ParsingParses.Common ParsingParses.Common.Equality.
 
 Set Implicit Arguments.
 

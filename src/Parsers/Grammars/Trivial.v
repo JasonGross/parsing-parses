@@ -1,6 +1,6 @@
 (** * Definition of ε, the CFG accepting only "" *)
 Require Import Coq.Strings.String Coq.Lists.List.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar.
+Require Import ParsingParses.Parsers.ContextFreeGrammar.
 
 Set Implicit Arguments.
 

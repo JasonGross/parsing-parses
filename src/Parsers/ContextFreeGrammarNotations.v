@@ -1,5 +1,5 @@
 Require Import Coq.Strings.String Coq.Strings.Ascii Coq.Lists.List.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar.
+Require Import ParsingParses.Parsers.ContextFreeGrammar.
 
 Fixpoint production_of_string (s : string) : production Ascii.ascii
   := match s with

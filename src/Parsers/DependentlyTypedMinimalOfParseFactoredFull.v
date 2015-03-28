@@ -1,10 +1,10 @@
 (** * Fully instantiated specialization of the dependently typed parser to minimal parse trees, taking in parse trees, using the factored abstraction barrier *)
 Require Import Coq.Lists.List Coq.Program.Program Coq.Program.Wf Coq.Arith.Wf_nat Coq.Arith.Compare_dec Coq.Classes.RelationClasses Coq.Strings.String.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar ADTSynthesis.Parsers.DependentlyTyped ADTSynthesis.Parsers.MinimalParse ADTSynthesis.Parsers.BaseTypes.
-Require Import ADTSynthesis.Parsers.Splitters.BruteForce ADTSynthesis.Parsers.Splitters.RDPList.
-Require Import ADTSynthesis.Parsers.DependentlyTypedMinimalOfParseFactored.
-Require Import ADTSynthesis.Parsers.WellFoundedParse ADTSynthesis.Parsers.ContextFreeGrammarProperties.
-Require Import ADTSynthesis.Common ADTSynthesis.Common.Wf ADTSynthesis.Common.Le.
+Require Import ParsingParses.Parsers.ContextFreeGrammar ParsingParses.Parsers.DependentlyTyped ParsingParses.Parsers.MinimalParse ParsingParses.Parsers.BaseTypes.
+Require Import ParsingParses.Parsers.Splitters.BruteForce ParsingParses.Parsers.Splitters.RDPList.
+Require Import ParsingParses.Parsers.DependentlyTypedMinimalOfParseFactored.
+Require Import ParsingParses.Parsers.WellFoundedParse ParsingParses.Parsers.ContextFreeGrammarProperties.
+Require Import ParsingParses.Common ParsingParses.Common.Wf ParsingParses.Common.Le.
 
 Set Implicit Arguments.
 

@@ -1,12 +1,12 @@
 (** * Reflective lemmas for proving a splitter complete *)
 Require Import Coq.Lists.List Coq.Strings.String.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar.
-Require Import ADTSynthesis.Parsers.BaseTypes ADTSynthesis.Parsers.BooleanBaseTypes.
-Require Import ADTSynthesis.Parsers.Splitters.RDPList.
+Require Import ParsingParses.Parsers.ContextFreeGrammar.
+Require Import ParsingParses.Parsers.BaseTypes ParsingParses.Parsers.BooleanBaseTypes.
+Require Import ParsingParses.Parsers.Splitters.RDPList.
 Require Import Coq.Init.Wf.
 Require Import Coq.Arith.Wf_nat.
-Require Import ADTSynthesis.Common.Wf.
-Require Import ADTSynthesis.Common.
+Require Import ParsingParses.Common.Wf.
+Require Import ParsingParses.Common.
 
 Set Implicit Arguments.
 

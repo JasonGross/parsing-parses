@@ -1,10 +1,10 @@
 (** * Specialization of the dependently typed parser to minimal parse trees, taking in parse trees, split up with an abstraction barrier *)
 Require Import Coq.Lists.List Coq.Program.Program Coq.Program.Wf Coq.Arith.Wf_nat Coq.Arith.Compare_dec Coq.Classes.RelationClasses Coq.Strings.String.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar ADTSynthesis.Parsers.DependentlyTyped ADTSynthesis.Parsers.MinimalParse.
-Require Import ADTSynthesis.Parsers.DependentlyTypedMinimal ADTSynthesis.Parsers.DependentlyTypedSum ADTSynthesis.Parsers.BaseTypes.
-Require Import ADTSynthesis.Parsers.WellFoundedParse ADTSynthesis.Parsers.ContextFreeGrammarProperties.
+Require Import ParsingParses.Parsers.ContextFreeGrammar ParsingParses.Parsers.DependentlyTyped ParsingParses.Parsers.MinimalParse.
+Require Import ParsingParses.Parsers.DependentlyTypedMinimal ParsingParses.Parsers.DependentlyTypedSum ParsingParses.Parsers.BaseTypes.
+Require Import ParsingParses.Parsers.WellFoundedParse ParsingParses.Parsers.ContextFreeGrammarProperties.
 Require Import Parsers.BooleanBaseTypes Parsers.BaseTypes.
-Require Import ADTSynthesis.Common ADTSynthesis.Common.Wf ADTSynthesis.Common.Le.
+Require Import ParsingParses.Common ParsingParses.Common.Wf ParsingParses.Common.Le.
 
 Set Implicit Arguments.
 

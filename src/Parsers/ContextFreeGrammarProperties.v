@@ -1,5 +1,5 @@
 (** * Properties about Context Free Grammars *)
-Require Import ADTSynthesis.Parsers.StringLike ADTSynthesis.Parsers.ContextFreeGrammar.
+Require Import ParsingParses.Parsers.StringLike ParsingParses.Parsers.ContextFreeGrammar.
 Require Import Coq.Classes.RelationClasses.
 
 Set Implicit Arguments.

@@ -1,10 +1,10 @@
 (* Reference implementation of a splitter and parser based on that splitter *)
 Require Import ADTNotation.BuildADT ADTNotation.BuildADTSig.
 Require Import ADT.ComputationalADT.
-Require Import ADTSynthesis.Common.List.Operations.
+Require Import ParsingParses.Common.List.Operations.
 Require Import ADTRefinement.GeneralRefinements.
 Require Import Parsers.ParserInterface.
-Require Import ADTSynthesis.ADTRefinement.Core.
+Require Import ParsingParses.ADTRefinement.Core.
 
 Set Implicit Arguments.
 

@@ -1,12 +1,12 @@
 (** * Definition of a boolean-returning CFG parser-recognizer *)
 Require Import Coq.Lists.List Coq.Program.Program Coq.Program.Wf Coq.Arith.Wf_nat Coq.Arith.Compare_dec Coq.Classes.RelationClasses Coq.Strings.String.
 Require Import Coq.omega.Omega.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar ADTSynthesis.Parsers.BooleanRecognizer ADTSynthesis.Parsers.MinimalParse.
-Require Import ADTSynthesis.Parsers.BaseTypes ADTSynthesis.Parsers.BooleanBaseTypes.
-Require Import ADTSynthesis.Parsers.Splitters.RDPList ADTSynthesis.Parsers.Splitters.BruteForce.
-Require Import ADTSynthesis.Parsers.MinimalParseOfParse.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammarProperties ADTSynthesis.Parsers.WellFoundedParse.
-Require Import ADTSynthesis.Common ADTSynthesis.Common.Wf.
+Require Import ParsingParses.Parsers.ContextFreeGrammar ParsingParses.Parsers.BooleanRecognizer ParsingParses.Parsers.MinimalParse.
+Require Import ParsingParses.Parsers.BaseTypes ParsingParses.Parsers.BooleanBaseTypes.
+Require Import ParsingParses.Parsers.Splitters.RDPList ParsingParses.Parsers.Splitters.BruteForce.
+Require Import ParsingParses.Parsers.MinimalParseOfParse.
+Require Import ParsingParses.Parsers.ContextFreeGrammarProperties ParsingParses.Parsers.WellFoundedParse.
+Require Import ParsingParses.Common ParsingParses.Common.Wf.
 Require Import Coq.Logic.Eqdep_dec.
 
 Local Hint Extern 0 =>

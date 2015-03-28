@@ -1,10 +1,10 @@
 (** * The string-like type *)
 (** ** Definitions *)
-Require ADTSynthesis.Parsers.StringLike.Core.
+Require ParsingParses.Parsers.StringLike.Core.
 (** ** Various string-like types *)
-Require ADTSynthesis.Parsers.StringLike.Examples.
+Require ParsingParses.Parsers.StringLike.Examples.
 (** ** Various theorems about string-like types *)
-Require ADTSynthesis.Parsers.StringLike.Properties.
+Require ParsingParses.Parsers.StringLike.Properties.
 
 Export Parsers.StringLike.Core.
 Export Parsers.StringLike.Examples.

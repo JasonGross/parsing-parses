@@ -1,6 +1,6 @@
 (** * Definition of grammar for regular expression [(ab)*] *)
 Require Import Coq.Strings.String Coq.Strings.Ascii Coq.Lists.List.
-Require Import ADTSynthesis.Parsers.ContextFreeGrammar ADTSynthesis.Parsers.ContextFreeGrammarNotations.
+Require Import ParsingParses.Parsers.ContextFreeGrammar ParsingParses.Parsers.ContextFreeGrammarNotations.
 
 Set Implicit Arguments.
 
