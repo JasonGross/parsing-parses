@@ -78,75 +78,7 @@ CORE_MODULES    := \
 	ADTRefinement/BuildADTRefinements/AddCache \
 	ADTRefinement/BuildADTRefinements
 
-QUERYSTRUCTURE_MODULES := \
-	QueryStructure/Specification/Representation/Notations \
-	QueryStructure/Specification/Representation/Heading \
-	QueryStructure/Specification/Representation/Tuple \
-	QueryStructure/Specification/Representation/Schema \
-	QueryStructure/Specification/Representation/Relation \
-	QueryStructure/Specification/Representation/QueryStructureSchema \
-	QueryStructure/Specification/Representation/QueryStructure \
-	QueryStructure/Specification/Representation/QueryStructureNotations \
-	QueryStructure/Specification/Constraints/tupleAgree \
-	QueryStructure/Specification/SearchTerms/ListInclusion \
-	QueryStructure/Specification/Operations/FlattenCompList \
-	QueryStructure/Specification/Operations/Empty \
-	QueryStructure/Specification/Operations/Query \
-	QueryStructure/Specification/Operations/Insert \
-	QueryStructure/Specification/Operations/Delete \
-	QueryStructure/Specification/Operations/Mutate \
-	QueryStructure/Specification/Operations/Update \
-	QueryStructure/Implementation/Constraints/ConstraintChecksRefinements \
-	QueryStructure/Implementation/Constraints/ConstraintChecksUnfoldings \
-	QueryStructure/Implementation/Operations/General/EmptyRefinements \
-	QueryStructure/Implementation/Operations/General/QueryRefinements \
-	QueryStructure/Implementation/Operations/General/InsertRefinements \
-	QueryStructure/Implementation/Operations/General/MutateRefinements \
-	QueryStructure/Implementation/Operations/General/DeleteRefinements \
-	QueryStructure/Implementation/Operations/General/QueryStructureRefinements \
-	QueryStructure/Implementation/Operations \
-	QueryStructure/Implementation/Operations/List/ListQueryRefinements \
-	QueryStructure/Implementation/Operations/List/ListInsertRefinements \
-	QueryStructure/Implementation/ListImplementation \
-	QueryStructure/Implementation/DataStructures/Bags/BagsInterface \
-	QueryStructure/Implementation/DataStructures/Bags/BagsProperties \
-	QueryStructure/Implementation/DataStructures/Bags/BagsTactics \
-	QueryStructure/Implementation/DataStructures/Bags/ListBags \
-	QueryStructure/Implementation/DataStructures/Bags/CountingListBags \
-	QueryStructure/Implementation/DataStructures/Bags/TreeBags \
-	QueryStructure/Implementation/DataStructures/Bags/CachingBags \
-	QueryStructure/Implementation/DataStructures/Bags/CacheableFunctions \
-	QueryStructure/Implementation/DataStructures/Bags/BagsOfTuples \
-	QueryStructure/Implementation/DataStructures/BagADT/BagADT \
-	QueryStructure/Implementation/DataStructures/BagADT/BagImplementation \
-	QueryStructure/Implementation/DataStructures/BagADT/QueryStructureImplementation \
-	QueryStructure/Implementation/DataStructures/BagADT/IndexSearchTerms \
-	QueryStructure/Implementation/DataStructures/BagADT/PrefixSearchTerms \
-	QueryStructure/Implementation/Operations/BagADT/Refinements \
-	QueryStructure/Implementation/BagImplementation \
-	QueryStructure/Automation/General/QueryAutomation \
-	QueryStructure/Automation/General/InsertAutomation \
-	QueryStructure/Automation/General/DeleteAutomation \
-	QueryStructure/Automation/General/QueryStructureAutomation \
-	QueryStructure/Automation/Constraints/TrivialConstraintAutomation \
-	QueryStructure/Automation/Constraints/FunctionalDependencyAutomation \
-	QueryStructure/Automation/Constraints/ForeignKeyAutomation \
-	QueryStructure/Automation/SearchTerms/InvertedSearchTerms \
-	QueryStructure/Automation/IndexSelection \
-	QueryStructure/Automation/AutoDB \
-	QueryStructure/Automation/QSImplementation
-
-FINITESET_MODULES := \
-	FiniteSetADTs \
-	FiniteSetADTs/FiniteSetADT \
-	FiniteSetADTs/FiniteSetADTMethodLaws \
-	FiniteSetADTs/FiniteSetADTImplementation \
-	FiniteSetADTs/FiniteSetRefinement \
-	FiniteSetADTs/WordInterface \
-	FiniteSetADTs/NatWord \
-	FiniteSetADTs/BedrockWord \
-
-SRC_GRAMMAR_MODULES := \
+SRC_PARSERS_BASE_MODULES := \
 	Parsers/ContextFreeGrammar\
 	Parsers/ContextFreeGrammarProperties\
 	Parsers/ContextFreeGrammarNotations\
@@ -155,8 +87,6 @@ SRC_GRAMMAR_MODULES := \
 	Parsers/Grammars/ExpressionNumPlus\
 	Parsers/Grammars/ExpressionParen\
 	Parsers/Grammars/ExpressionNumPlusParen
-
-SRC_PARSERS_BASE_MODULES := \
 	Parsers/StringLike\
 	Parsers/StringLike/Core\
 	Parsers/StringLike/Properties\
@@ -180,81 +110,6 @@ SRC_PARSERS_BASE_MODULES := \
 	Parsers/MinimalParse\
 	Parsers/MinimalParseOfParse\
 	Parsers/BooleanRecognizerCorrect
-
-SRC_PARSERS_MODULES := \
-	Parsers/Specification\
-	Parsers/ParserInterface \
-	Parsers/ParserImplementation\
-	Parsers/Examples/ABStar\
-	$(SRC_PARSERS_BASE_MODULES)\
-	$(SRC_GRAMMAR_MODULES)
-
-#	QueryStructure/Refinements/BagADT/DelegateImplementation\
-
-COMPILER_MODULES := \
-	FiatToFacade/StringMapNotations \
-	FiatToFacade/FacadeNotations \
-	FiatToFacade/Utilities \
-	FiatToFacade/BedrockUtilities \
-	FiatToFacade/StringMapUtilities \
-	FiatToFacade/FacadeUtilities \
-	FiatToFacade/Superset \
-	FiatToFacade/SupersetMorphisms \
-	FiatToFacade/SupersetUtilities \
-	FiatToFacade/Prog \
-	FiatToFacade/ProgEquiv \
-	FiatToFacade/ProgUtilities \
-	FiatToFacade/ProgMorphisms \
-	FiatToFacade/Loop \
-	FiatToFacade/LoopUtilities \
-	FiatToFacade/GLabelMapFacts \
-	FiatToFacade/Compiler/Utilities \
-	FiatToFacade/Compiler/Prerequisites \
-	FiatToFacade/Compiler/Basics \
-	FiatToFacade/Compiler/Pairs \
-	FiatToFacade/Compiler/Cleanup \
-	FiatToFacade/Compiler/NoOp \
-	FiatToFacade/Compiler/Copy \
-	FiatToFacade/Compiler/Constants \
-	FiatToFacade/Compiler/Binops \
-	FiatToFacade/Compiler/Conditionals \
-	FiatToFacade/Compiler/ADTs/FiniteSets \
-	FiatToFacade/Compiler/ADTs/ListsInversion \
-	FiatToFacade/Compiler/ADTs/Lists \
-	FiatToFacade/Compiler/ADTs/Folds \
-	FiatToFacade/Compiler/Automation/Vacuum \
-	FiatToFacade/Compiler/Automation/FacadeHelpers \
-	FiatToFacade/Compiler/Automation/SpecializedFolds \
-	FiatToFacade/Compiler
-
-ICS_MODULES := \
-	Ics/Ics \
-	Ics/WaterTank
-
-DNS_MODULES := \
-	DnsServer/packet \
-	DnsServer/Dns
-
-EXAMPLE_MODULES := \
-	QueryStructure/BookstorewDelegation \
-	QueryStructure/WeatherwDelegation \
-	QueryStructure/StockswDelegation \
-	QueryStructure/WeatherExtraction \
-	QueryStructure/BookstoreExtraction \
-	QueryStructure/StocksExtraction
-#FiniteSetsADTs/FiniteSetsExamples \
-	ExtractingFiniteSetsExamples \
-	QueryStructure/Bookstore \
-	QueryStructure/BookstoreSemiAutomatic \
-	QueryStructure/Weather \
-	QueryStructure/Stocks \
-	ProcessScheduler \
-	CacheADT/KVEnsembles \
-	CacheADT/CacheSpec \
-	CacheADT/CacheRefinements \
-	CacheADT/FMapCacheImplementation \
-	CacheADT/LRUCache \
-	BookstoreCache \
 
 
 COQDEP=coqdep
@@ -358,7 +213,7 @@ compiler : $(COMPILER_VOS)
 ics : $(ICS_VOS) examples/Ics/WaterTank.ml
 
 examples/Ics/WaterTank.ml: $(ICS_VOS) examples/Ics/WaterTankExtract.v
-	coqc -R src ADTSynthesis -R examples ADTExamples examples/Ics/WaterTankExtract >$@
+	coqc -R src ParsingParses >$@
 
 dns : $(DNS_VOS)
 
@@ -389,7 +244,7 @@ Overview/ProjectOverview.pdf: $(shell find Overview -name "*.tex" -o -name "*.st
 
 Makefile.coq: Makefile
 	$(VECHO) "COQ_MAKEFILE > $@"
-	$(Q)"$(COQBIN)coq_makefile" $(CORE_VS) $(EXAMPLE_VS) $(QUERYSTRUCTURE_VS) $(SRC_PARSERS_VS) $(FINITESET_VS) $(COMPILER_VS) COQC = "\$$(SILENCE_COQC)\$$(TIMER) \"\$$(COQBIN)coqc\"" COQDEP = "\$$(SILENCE_COQDEP)\"\$$(COQBIN)coqdep\" -c" COQDOCFLAGS = "$(COQDOCFLAGS)" -arg -dont-load-proofs -R src ADTSynthesis -R examples ADTExamples | sed s'/^\(-include.*\)$$/ifneq ($$(filter-out $(FAST_TARGETS),$$(MAKECMDGOALS)),)~\1~else~ifeq ($$(MAKECMDGOALS),)~\1~endif~endif/g' | tr '~' '\n' | sed s'/^clean:$$/clean-old::/g' | sed s'/^Makefile: /Makefile-old: /g' > $@
+	$(Q)"$(COQBIN)coq_makefile" $(CORE_VS) $(EXAMPLE_VS) $(QUERYSTRUCTURE_VS) $(SRC_PARSERS_VS) $(FINITESET_VS) $(COMPILER_VS) COQC = "\$$(SILENCE_COQC)\$$(TIMER) \"\$$(COQBIN)coqc\"" COQDEP = "\$$(SILENCE_COQDEP)\"\$$(COQBIN)coqdep\" -c" COQDOCFLAGS = "$(COQDOCFLAGS)" -arg -dont-load-proofs -R src ParsingParses | sed s'/^\(-include.*\)$$/ifneq ($$(filter-out $(FAST_TARGETS),$$(MAKECMDGOALS)),)~\1~else~ifeq ($$(MAKECMDGOALS),)~\1~endif~endif/g' | tr '~' '\n' | sed s'/^clean:$$/clean-old::/g' | sed s'/^Makefile: /Makefile-old: /g' > $@
 
 -include Makefile.coq
 
@@ -421,49 +276,3 @@ clean-doc::
 	rm -rf html
 	rm -f all.pdf Overview/library.pdf Overview/ProjectOverview.pdf Overview/coqdoc.sty coqdoc.sty
 	rm -f $(shell find Overview -name "*.log" -o -name "*.aux" -o -name "*.bbl" -o -name "*.blg" -o -name "*.synctex.gz" -o -name "*.out" -o -name "*.toc")
-
-examples/BookstoreExtraction.vo : examples/BookstoreExtraction.v examples/Bookstore.vo
-	coqc -R src ADTSynthesis -R examples ADTExamples examples/BookstoreExtraction.v
-
-examples/BookstoreNaiveExtraction.vo : examples/BookstoreNaiveExtraction.v examples/BookstoreNaive.vo
-	coqc -R src ADTSynthesis -R examples ADTExamples examples/BookstoreNaiveExtraction.v
-
-examples/bookstore.cmxa: examples/BookstoreExtraction.vo
-	cd examples && ocamlopt -w -a -o bookstore.cmxa -a bookstore.mli bookstore.ml
-
-examples/bookstorenaive.cmxa: examples/BookstoreNaiveExtraction.vo
-	cd examples && ocamlopt -w -a -o bookstorenaive.cmxa -a bookstorenaive.mli bookstorenaive.ml
-
-repl: examples/repl.ml examples/bookstore.cmxa
-	cd examples && ocamlopt -w -a -o repl unix.cmxa str.cmxa bookstore.cmxa repl.ml
-
-naiverepl: examples/repl.ml examples/bookstorenaive.cmxa
-	cd examples && ocamlopt -w -a -o repl unix.cmxa str.cmxa bookstorenaive.cmxa repl.ml
-
-examples/ExtractingFiniteSetsExamples.vo: examples/ExtractingFiniteSetsExamples.v
-	$(COQC) -I ../bedrock/platform -dont-load-proofs -R src ADTSynthesis -R examples ADTExamples \
-		-R ../bedrock/src Bedrock -R ../bedrock/platform/cito Cito -R ../bedrock/platform/facade Facade \
-		examples/ExtractingFiniteSetsExamples
-
-examples/SumUnique.ml examples/SumUniqueAMD64.vo: examples/SumUniqueAMD64.v
-	cat examples/ignoreFail.ml >$@
-	$(COQC) -I ../bedrock/platform -dont-load-proofs -R src ADTSynthesis -R examples ADTExamples \
-		-R ../bedrock/src Bedrock -R ../bedrock/platform/cito Cito -R ../bedrock/platform/facade Facade \
-		$< 2>/dev/null \
-		| sed '/let coq_Unnamed_thm_/,/module/{/module/!d}' \
-		| sed 's/   allWords_def/   fun _ -> []/' \
-		| sed 's/   N.to_nat$$/   fun _ -> O/' \
-		>>$@
-	cat examples/printCode.ml >>$@
-
-examples/SumUnique.s: examples/SumUnique.ml
-	echo ".global bedrock_heap,export_dffun,sys_abort" >$@
-	echo >>$@
-	ocaml -w -x $< >>$@
-
-examples/SumUnique.exe: examples/SumUnique.o examples/bedrock_main.o examples/bedrock_driver.o
-	cc $^ -o $@
-
-cheat:
-	cp examples/SumUnique.pregenerated.ml examples/SumUnique.ml
-	cp examples/SumUnique.pregenerated.s examples/SumUnique.s
