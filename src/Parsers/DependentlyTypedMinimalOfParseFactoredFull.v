@@ -87,3 +87,5 @@ Section recursive_descent_parser.
     exact H.
   Defined.
 End recursive_descent_parser.
+
+Print Assumptions minimal_parse_nonterminal__of__parse.

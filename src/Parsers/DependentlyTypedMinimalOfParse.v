@@ -485,6 +485,62 @@ Section recursive_descent_parser.
              p_parse_production p_parse p_parse_item p_parse_nonterminal
              mp_parse_production mp_parse mp_parse_item mp_parse_nonterminal : minimal_instance_db.
 
+        Lemma match_hd_helper {x xs}
+              {str P}
+              (p : parse_of String G str (x::xs))
+              (Hp : Forall_parse_of P p)
+              R
+              k
+              P0 P1
+        : match match p as p' in (parse_of _ _ str' prods')
+                      return
+                      (Forall_parse_of P p'
+                       -> option (R str' (hd x prods')))
+                with
+                  | ParseHead str pat pats p' => fun H => Some (k str pat pats p' H)
+                  | ParseTail str pat pats p' => fun _ => None
+                end Hp
+                return Type
+          with
+            | Some _ => P0
+            | None => P1
+          end
+          -> match p return Type with
+               | ParseHead str pat pats p' => P0
+               | ParseTail str pat pats p' => P1
+             end.
+        Proof.
+          destruct p; try split; try tauto; try congruence.
+        Qed.
+
+        Lemma match_tl_helper {x xs}
+              {str P}
+              (p : parse_of String G str (x::xs))
+              (Hp : Forall_parse_of P p)
+              R
+              k
+              P0 P1
+        : match match p as p' in (parse_of _ _ str' prods')
+                      return
+                      (Forall_parse_of P p'
+                       -> option (R str' (tl prods')))
+                with
+                  | ParseHead str pat pats p' => fun _ => None
+                  | ParseTail str pat pats p' => fun H => Some (k str pat pats p' H)
+                end Hp
+                return Type
+          with
+            | Some _ => P0
+            | None => P1
+          end
+          -> match p return Type with
+               | ParseHead str pat pats p' => P1
+               | ParseTail str pat pats p' => P0
+             end.
+        Proof.
+          destruct p; try split; try tauto; try congruence.
+        Qed.
+
         Local Ltac t''0 :=
           first [ progress cbv zeta
                 | intro
@@ -584,9 +640,49 @@ Please report." *)
               end
             | [ H : (_ =s _) = true |- _ ] => apply bool_eq_correct in H
             | [ H : is_true (_ =s _) |- _ ] => apply bool_eq_correct in H
-            | [ H : parse_of_item _ _ _ (NonTerminal _ _) |- _ ] => (* work around 4035 *) let H' := fresh in rename H into H'; dependent destruction H'
-            | [ H : parse_of_item _ _ _ (Terminal _) |- _ ] => (* work around 4035 *) let H' := fresh in rename H into H'; dependent destruction H'
-            | [ H : parse_of_production _ _ _ [] |- _ ] => (* work around 4035 *) let H' := fresh in rename H into H'; dependent destruction H'
+            | [ H : _::_ = nil |- _ ] => solve [ inversion H ]
+            | [ H : nil = _::_ |- _ ] => solve [ inversion H ]
+            | [ H : _::_ = _::_ |- _ ] => inversion H; clear H
+            | [ H : Terminal _ = Terminal _ |- _ ] => inversion H; clear H
+            | [ H : NonTerminal _ _ = Terminal _ |- _ ] => solve [ inversion H ]
+            | [ H : Terminal _ = NonTerminal _ _ |- _ ] => solve [ inversion H ]
+            | [ H : NonTerminal _ _ = NonTerminal _ _ |- _ ] => inversion H; clear H
+            | [ H : parse_of_item _ _ ?s ?x |- _ ]
+              => atomic s;
+                not atomic x;
+                generalize dependent H;
+                let T := fresh in
+                set (T := x);
+                  generalize (eq_refl : x = T);
+                  clearbody T;
+                  intros ? H;
+                  destruct H
+            | [ H : parse_of_production _ _ ?s ?x |- _ ]
+              => atomic s;
+                not atomic x;
+                generalize dependent H;
+                let T := fresh in
+                set (T := x);
+                  generalize (eq_refl : x = T);
+                  clearbody T;
+                  intros ? H;
+                  destruct H
+            | [ H : _ |- _ ]
+              => simpl in H;
+
+                match type of H with
+                  | match match ?p as p' in (parse_of _ _ str' prods')
+                                return (Forall_parse_of ?P p'
+                                        -> option (?P' ?str0 ?valid str' _))
+                          with _ => _
+                          end ?f
+                    with
+                      | Some _ => False
+                      | None => ?T -> False
+                    end
+                    => first [ apply (@match_tl_helper _ _ _ _ p f (fun str' tlv => P' str0 valid str' tlv)) in H
+                             | apply (@match_hd_helper _ _ _ _ p f (fun str' tlv => P' str0 valid str' tlv)) in H ]
+                end
             | [ H : ?A -> ?B, H' : ?A |- _ ] => specialize (H H')
             | [ H : ?A -> False |- _ ] => let A' := (eval hnf in A) in progress change (A' -> False) in H
             | _ => progress trivial
@@ -594,10 +690,34 @@ Please report." *)
             | _ => t''0
             | [ H : (_ + _)%type |- _ ] => destruct H
             | [ |- (_ * _)%type ] => split
-            | [ H : minimal_parse_of_item _ _ _ _ _ _ _ _ (NonTerminal _ _) |- _ ] => (* work around 4035 *) let H' := fresh in rename H into H'; dependent destruction H'
-            | [ H : minimal_parse_of_item _ _ _ _ _ _ _ _ (Terminal _) |- _ ] => (* work around 4035 *) let H' := fresh in rename H into H'; dependent destruction H'
-            | [ H : minimal_parse_of _ _ _ _ _ _ _ _ (_::_) |- _ ] => (* work around 4035 *) let H' := fresh in rename H into H'; dependent destruction H'
-            | [ H : parse_of _ _ _ (_::_) |- _ ] => (* work around 4035 *) let H' := fresh in rename H into H'; dependent destruction H'
+            | [ H : minimal_parse_of_item _ _ _ _ _ _ _ _ ?x |- _ ]
+              => not atomic x;
+                generalize dependent H;
+                let T := fresh in
+                set (T := x);
+                  generalize (eq_refl : x = T);
+                  clearbody T;
+                  intros ? H;
+                  destruct H
+            | [ H : minimal_parse_of _ _ _ _ _ _ _ _ ?x |- _ ]
+              => not atomic x;
+                generalize dependent H;
+                let T := fresh in
+                set (T := x);
+                  generalize (eq_refl : x = T);
+                  clearbody T;
+                  intros ? H;
+                  destruct H
+            | [ H : parse_of _ _ ?s ?x |- _ ]
+              => atomic s;
+                not atomic x;
+                generalize dependent H;
+                let T := fresh in
+                set (T := x);
+                  generalize (eq_refl : x = T);
+                  clearbody T;
+                  intros ? H;
+                  destruct H
             | [ H : appcontext[if lt_dec ?a ?b then _ else _] |- _ ]
               => destruct (lt_dec a b)
           end.
@@ -704,3 +824,5 @@ Please report." *)
     Defined.
   End minimal.
 End recursive_descent_parser.
+
+Print Assumptions minimal_parse_nonterminal__of__parse.

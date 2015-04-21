@@ -327,8 +327,49 @@ Section recursive_descent_parser.
 
   Context (split_list_complete : forall str0 valid it its str pf, @split_list_completeT _ String G types_data str0 valid it its str pf (split_string_for_production str0 valid it its str)).
 
-  Local Ltac ddestruct H :=
-    (* work around 4035 *) let H' := fresh in rename H into H'; dependent destruction H'.
+  Lemma match_hd_helper {x xs}
+        {str P}
+        (p : parse_of String G str (x::xs))
+        (Hp : Forall_parse_of P p)
+        R
+        k
+  : match p as p' in (parse_of _ _ str' prods')
+          return
+          (Forall_parse_of P p'
+           -> option (R str' (hd x prods')))
+    with
+      | ParseHead str pat pats p' => fun H => Some (k str pat pats p' H)
+      | ParseTail str pat pats p' => fun _ => None
+    end Hp = None
+    <-> match p return Prop with
+          | ParseHead str pat pats p' => False
+          | ParseTail str pat pats p' => True
+        end.
+  Proof.
+    destruct p; split; try tauto; try congruence.
+  Qed.
+
+  Lemma match_tl_helper {x xs}
+        {str P}
+        (p : parse_of String G str (x::xs))
+        (Hp : Forall_parse_of P p)
+        R
+        k
+  : match p as p' in (parse_of _ _ str' prods')
+          return
+          (Forall_parse_of P p'
+           -> option (R str' (tl prods')))
+    with
+      | ParseHead str pat pats p' => fun _ => None
+      | ParseTail str pat pats p' => fun H => Some (k str pat pats p' H)
+    end Hp = None
+    <-> match p return Prop with
+          | ParseHead str pat pats p' => True
+          | ParseTail str pat pats p' => False
+        end.
+  Proof.
+    destruct p; split; try tauto; try congruence.
+  Qed.
 
   Local Ltac t' :=
     idtac;
@@ -341,13 +382,42 @@ Section recursive_descent_parser.
       | _ => progress destruct_head_hnf sigT
       | _ => progress destruct_head_hnf prod
       | _ => progress destruct_head_hnf and
+      | _ => progress subst
       | [ H : ~?T, H' : ?T |- _ ] => destruct (H H')
       | [ H : (?x =s ?x) = false |- _ ] => erewrite (proj2 (bool_eq_correct _ _ _)) in H by reflexivity
-      | [ H : parse_of_item _ _ _ (Terminal _) |- _ ] => ddestruct H
-      | [ H : parse_of_item _ _ _ (NonTerminal _ _) |- _ ] => ddestruct H
-      | [ H : parse_of_production _ _ _ [] |- _ ] => ddestruct H
-      | [ H : parse_of _ _ _ (_::_) |- _ ] => ddestruct H
-      | [ H : parse_of _ _ _ nil |- _ ] => ddestruct H
+      | [ H : Terminal _ = Terminal _ |- _ ] => inversion H; clear H
+      | [ H : parse_of_item _ _ ?s ?x |- _ ]
+        => atomic s;
+          not atomic x;
+          generalize dependent H;
+          let T := fresh in
+          set (T := x);
+            generalize (eq_refl : x = T);
+            clearbody T;
+            intros ? H;
+            destruct H
+      | [ H : parse_of_production _ _ ?s ?x |- _ ]
+        => atomic s;
+          not atomic x;
+          generalize dependent H;
+          let T := fresh in
+          set (T := x);
+            generalize (eq_refl : x = T);
+            clearbody T;
+            intros ? H;
+            destruct H
+      | [ H : parse_of _ _ ?s ?x |- _ ]
+        => atomic s;
+          not atomic x;
+          generalize dependent H;
+          let T := fresh in
+          set (T := x);
+            generalize (eq_refl : x = T);
+            clearbody T;
+            intros ? H;
+            destruct H
+      | [ H : _ = None |- _ ] => apply match_hd_helper in H
+      | [ H : _ = None |- _ ] => apply match_tl_helper in H
       | [ H : appcontext[if lt_dec ?a ?b then _ else _] |- _ ] => destruct (lt_dec a b)
       | [ H : sub_nonterminals_listT _ _, H' : is_valid_nonterminal _ _ = true |- _ ]
         => unique pose proof (H _ H')
